@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply height to select2 components */
+span.select2-selection.select2-selection--single,
+span#select2-select-cluster-container.select2-selection__rendered,
+span.select2-selection__placeholder,
+span.select2-selection__rendered,
+span.select2-selection__arrow {
+  @apply h-[36px] !important;
+}
+
+/* Apply line height to the rendered selection */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 36px !important;
+}
+
+@layer components {
+  aside ul li.active {
+    @apply bg-black text-white;
+  }
+
+  div.nav-header a.active {
+    @apply bg-white text-black;
+  }
+
+  aside ul li:not(.active) {
+    @apply hover:bg-black hover:text-white;
+  }
+}
