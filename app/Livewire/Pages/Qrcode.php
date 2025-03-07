@@ -17,7 +17,13 @@ class Qrcode extends Component
         $this->loading = true;
 
         // Setelah data didapatkan, update nilai data
-        $this->data = "https://example.com/qr-code".$data['clusterId'].$data['ruasId'].$data['gerbangId']; // Gantikan dengan data yang relevan
+
+        // Example data
+        // https://iot.amarullz.com/saldo/?cluster=3&cb=45&gb=30
+
+        $BASE_QRCODE_URL = env('BASE_QRCODE_URL');
+
+        $this->data = $BASE_QRCODE_URL . '/?cluster=' . $data['clusterId'] . '=&cb=' . $data['ruasId'] . '&gb=' . $data['gerbangId'];
 
         // Set loading menjadi false setelah data selesai diproses
         $this->loading = false;
