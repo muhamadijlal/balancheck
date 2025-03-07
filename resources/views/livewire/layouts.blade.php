@@ -20,7 +20,7 @@
     <x-nav-header />
   </div>
 
-  <div class="flex gap-20 h-full lg:h-[calc(100vh-16rem)]">
+  <div class="flex gap-20 h-full lg:h-[calc(100vh-1rem)]">
     <x-sidebar />
 
     <main class="w-20 max-w-screen h-full flex-1">

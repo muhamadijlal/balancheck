@@ -30,6 +30,8 @@
 
 @push('scripts')
 <script>
+    let REFRESH_QRCODE_INTERVAL = "{{ config('app.env.REFRESH_QRCODE_INTERVAL') }}"; // Get the current environment 
+
     // Listen for the 'start-timer' event triggered by Livewire
     Livewire.on('start-timer', function() {
         console.log('Timer started...'); // Debugging log to confirm it's firing
@@ -38,8 +40,8 @@
         setTimeout(function() {
             console.log('10 seconds passed, resetting data...'); // Debugging log
             // Emit an event to Livewire to reset the data after 10 seconds
-            Livewire.dispatch('resetData');  // Ensure resetData is being emitted
-        }, 10000); // 10000 ms = 10 seconds
+            Livewire.dispatch('resetData');
+        }, REFRESH_QRCODE_INTERVAL * 1000);
     });
 </script>
 @endpush
