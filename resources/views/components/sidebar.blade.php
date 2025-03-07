@@ -1,4 +1,4 @@
-<aside class="hidden min-w-72 w-72 h-[110%] lg:flex flex-col justify-between">
+<aside class="hidden min-w-72 w-72 min-h-full lg:flex flex-col justify-between">
     <ul class="space-y-4">
         <li class="rounded-lg {{ request()->routeIs('show-qr-code') ? "active" : ""}}">
             <a href="{{ route('show-qr-code') }}" class="flex items-center gap-3 px-4 py-2 rounded-lg font-medium" wire:navigate>
@@ -14,7 +14,7 @@
         </li>
     </ul>
 
-    <div class="flex items-center justify-between sm:hidden lg:flex">
+    <div class="flex items-center justify-between sm:hidden lg:flex p-4">
         <div class="flex flex-col">
             <p class="text-base font-semibold">Haidarijlal</p>
             <span class="text-xs text-gray-500">m.haidarijl@gmail.com</span>

@@ -20,10 +20,10 @@
     <x-nav-header />
   </div>
 
-  <div class="flex gap-20 h-full lg:h-[calc(100vh-1rem)]">
+  <div class="flex gap-20 h-[calc(100vh-14rem)]">
     <x-sidebar />
 
-    <main class="w-20 max-w-screen h-full flex-1">
+    <main class="w-[calc(100% - 299px)] h-full flex-1 overflow-y-auto pe-10">
       {{ $slot }}
     </main>
   </div>
