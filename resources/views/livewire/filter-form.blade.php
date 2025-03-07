@@ -5,7 +5,7 @@
         </div>
         @error("cluster") <span class="text-red-500 mt-3 text-sm">{{ __($message) }}</span> @enderror
     </div>
-    
+
     <div class="lg:col-span-2 lg:col-start-3 w-full">
         <div wire:ignore>
             <x-select wire:model="ruas" id="select-ruas" disabled="true" class="w-full"></x-select>

@@ -23,7 +23,7 @@
   <div class="flex gap-20 h-[calc(100vh-14rem)]">
     <x-sidebar />
 
-    <main class="w-[calc(100% - 299px)] h-full flex-1 overflow-y-auto pe-10">
+    <main class="w-[calc(100% - 299px)] h-full flex-1 overflow-y-auto px-5">
       {{ $slot }}
     </main>
   </div>
