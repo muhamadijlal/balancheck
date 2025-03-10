@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-16">
+<div class="flex flex-col gap-16 lg:gap-0">
     @livewire('filter-form')
 
     <div class="flex flex-col items-center justify-center h-full md:h-[calc(100vh-22rem)] gap-5 mb-16 lg:mb-0">
