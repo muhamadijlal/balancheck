@@ -28,4 +28,8 @@ span.select2-selection__arrow {
   aside ul li:not(.active) {
     @apply hover:bg-black hover:text-white;
   }
+
+  td > span > div {
+    @apply text-xs;
+  }
 }

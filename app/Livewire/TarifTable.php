@@ -30,7 +30,7 @@ final class TarifTable extends PowerGridComponent
                 ->showPerPage(10, [10, 50, 100, 500])
                 ->showRecordCount('full'),
 
-            PowerGrid::responsive(),
+            // PowerGrid::responsive(),
         ];
     }
 
@@ -50,11 +50,21 @@ final class TarifTable extends PowerGridComponent
             ->add('gb')
             ->add('nama_gb')
             ->add('nama_asal_gb')
-            ->add('gol1')
-            ->add('gol2')
-            ->add('gol3')
-            ->add('gol4')
-            ->add('gol5')
+            ->add('gol1', function($row){
+                return "Rp. ".number_format($row->gol1, 0, '.', '.').",-";
+            })
+            ->add('gol2', function($row){
+                return "Rp. ".number_format($row->gol2, 0, '.', '.').",-";
+            })
+            ->add('gol3', function($row){
+                return "Rp. ".number_format($row->gol3, 0, '.', '.').",-";
+            })
+            ->add('gol4', function($row){
+                return "Rp. ".number_format($row->gol4, 0, '.', '.').",-";
+            })
+            ->add('gol5', function($row){
+                return "Rp. ".number_format($row->gol5, 0, '.', '.').",-";
+            })
             ->add('ags');
     }
 
@@ -85,23 +95,23 @@ final class TarifTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Golonga 1', 'gol1')
+            Column::make('Golongan 1', 'gol1')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Golonga 2', 'gol2')
+            Column::make('Golongan 2', 'gol2')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Golonga 3', 'gol3')
+            Column::make('Golongan 3', 'gol3')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Golonga 4', 'gol4')
+            Column::make('Golongan 4', 'gol4')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Golonga 5', 'gol5')
+            Column::make('Golongan 5', 'gol5')
                 ->sortable()
                 ->searchable(),
 
