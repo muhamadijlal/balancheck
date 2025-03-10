@@ -23,7 +23,7 @@ class Qrcode extends Component
 
         $BASE_QRCODE_URL = env('BASE_QRCODE_URL');
 
-        $this->data = $BASE_QRCODE_URL . '/?cluster=' . $data['clusterId'] . '=&cb=' . $data['ruasId'] . '&gb=' . $data['gerbangId'];
+        $this->data = $BASE_QRCODE_URL . '/?cluster=' . $data['clusterId'] . '&cb=' . $data['ruasId'] . '&gb=' . $data['gerbangId'];
 
         // Set loading menjadi false setelah data selesai diproses
         $this->loading = false;

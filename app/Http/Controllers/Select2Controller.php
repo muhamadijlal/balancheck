@@ -16,7 +16,7 @@ class Select2Controller extends Controller
             $query->where('cluster', 'like', '%'.$request['query'].'%');
         }
 
-        $clusters = $query->groupBy('cluster')->get();
+        $clusters = $query->groupBy('cluster')->where('aktiv', 1)->get();
 
         return $clusters;
     }
@@ -24,15 +24,15 @@ class Select2Controller extends Controller
     public function selectRuas(Request $request)
     {
         $query = DB::table("tbl_gerbang")
-                    ->select("cb as value","cb as label")
+                    ->select("cb as value","cabang as label")
                     ->where("cluster",$request->clusterId)
                     ->groupBy("cb");
 
         if($request['query']) {
-            $query->where('cb', 'like', '%'.$request['query'].'%');
+            $query->where('cabang', 'like', '%'.$request['query'].'%');
         }
 
-        $ruas = $query->groupBy("cb")->get();
+        $ruas = $query->groupBy("cb")->where('aktiv', 1)->get();
 
         return $ruas;
     }
@@ -48,7 +48,7 @@ class Select2Controller extends Controller
             $query->where('nama', 'like', '%'.$request['query'].'%');
         }
 
-        $gerbang = $query->groupBy("gb","nama")->get();
+        $gerbang = $query->groupBy("gb","nama")->where('aktiv', 1)->get();
 
         return $gerbang;
     }
