@@ -16,8 +16,8 @@ class ViewTarif extends Model
 
     public function scopeGroupByRuas($query)
     {
-        return $query->select('cb')
-                     ->groupBy('cb');
+        return $query->select('cabang')
+                     ->groupBy('cabang');
     }
 
     public function scopeGroupByGerbang($query)

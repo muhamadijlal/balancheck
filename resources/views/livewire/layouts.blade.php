@@ -14,16 +14,16 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   @livewireStyles
 </head>
-<body class="p-6 md:p-12 h-full">
+<body class="px-6 pt-6 md:px-12 md:pt-12 h-full">
   <div class="mt-5 mb-8 space-y-6">
-    <x-header title="{{ $title ?? __('Title') }}" description="{{ $description ?? __('Description') }}" />
+    <x-header title="{{ __('Apps Pembacaan saldo') }}" description="{{ __('Aplikasi pembacaan asal gerbang dan saldo') }}" />
     <x-nav-header />
   </div>
 
-  <div class="flex gap-20 h-[calc(100vh-14rem)]">
+  <div class="flex gap-10 h-[calc(100vh-12rem)]">
     <x-sidebar />
 
-    <main class="w-[calc(100% - 299px)] h-full flex-1 overflow-y-auto px-5">
+    <main class="w-[calc(100% - 256px)] h-full flex-1 overflow-y-scroll overflow-x-hidden px-5">
       {{ $slot }}
     </main>
   </div>

@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-5">
     @livewire('filter-form')
 
-    <div class="flex flex-col items-center justify-center h-full md:h-[calc(100vh-20rem)] gap-5 mt-24">
+    <div class="flex flex-col items-center justify-center h-full md:h-[calc(100vh-22rem)] gap-5">
         <div class="text-center">
             <!-- Wire loading state -->
             <div wire:loading class="text-center">
@@ -21,7 +21,6 @@
                     <!-- Default content when data is not available -->
                     <x-lucide-scan-qr-code class="size-28 md:size-56 text-gray-200 mx-auto mb-8" />
                     <h1 class="text-2xl font-bold">QR Code</h1>
-                    <p class="text-gray-500">Generate QR Code anda.</p>
                 @endif
             </div>
         </div>

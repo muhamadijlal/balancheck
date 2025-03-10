@@ -42,9 +42,6 @@ class Qrcode extends Component
     public function render()
     {
         return view('livewire.pages.qrcode')
-            ->layout('livewire.layouts', [
-                'title' => 'QR Code',
-                'description' => 'Check your QR code now.'
-            ]);
+            ->layout('livewire.layouts');
     }
 }

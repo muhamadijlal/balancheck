@@ -46,18 +46,16 @@ final class TarifTable extends PowerGridComponent
         return PowerGrid::fields()
             ->add('id')
             ->add('cluster')
-            ->add('cb')
+            ->add('cabang')
             ->add('gb')
-            ->add('asal_cb')
-            ->add('asal_gb')
+            ->add('nama_gb')
+            ->add('nama_asal_gb')
             ->add('gol1')
             ->add('gol2')
             ->add('gol3')
             ->add('gol4')
             ->add('gol5')
-            ->add('ags')
-            ->add('nama_gb')
-            ->add('nama_asal_gb');
+            ->add('ags');
     }
 
     public function columns(): array
@@ -71,19 +69,19 @@ final class TarifTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Cabang', 'cb')
+            Column::make('Nama Cabang', 'cabang')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Gerbang', 'gb')
+            Column::make('Gerbang Id', 'gb')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Asal Cabang', 'asal_cb')
+            Column::make('Nama Gerbang', 'nama_gb')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Asal Gerbang', 'asal_gb')
+            Column::make('Nama Asal Gerbang', 'nama_asal_gb')
                 ->sortable()
                 ->searchable(),
 
@@ -111,14 +109,6 @@ final class TarifTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Nama Gerbang', 'nama_gb')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Nama Asal Gerbang', 'nama_asal_gb')
-                ->sortable()
-                ->searchable(),
-
             // Column::action('Action')
         ];
     }
@@ -133,10 +123,10 @@ final class TarifTable extends PowerGridComponent
                 ->optionValue('cluster'),
 
             // Filter By Ruas (cabang)
-            Filter::select('cb')
+            Filter::select('cabang')
                 ->dataSource(ViewTarif::groupByRuas()->get())
-                ->optionLabel('cb')
-                ->optionValue('cb'),
+                ->optionLabel('cabang')
+                ->optionValue('cabang'),
 
             // Filter By (gerbang)
             Filter::select('gb')

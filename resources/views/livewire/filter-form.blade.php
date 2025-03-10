@@ -23,7 +23,7 @@
     <div class="lg:col-span-6 w-full">
         <x-button type="submit" class="font-bold text-md text-center w-full">
             <x-lucide-mouse-pointer-click class="size-7 mr-3" />
-            Submit
+            Generate QR Code
         </x-button>
     </div>
 </form>

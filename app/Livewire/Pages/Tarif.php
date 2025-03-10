@@ -9,9 +9,6 @@ class Tarif extends Component
     public function render()
     {
         return view('livewire.pages.tarif')
-            ->layout('livewire.layouts', [
-                'title' => 'Tarif',
-                'description' => 'Check list tarif ruas.'
-            ]);
+            ->layout('livewire.layouts');
     }
 }
