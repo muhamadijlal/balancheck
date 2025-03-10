@@ -1,3 +1,3 @@
-<div class="mt-20">
+<div>
     @livewire('tarif-table')
 </div>

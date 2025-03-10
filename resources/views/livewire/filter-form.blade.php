@@ -1,26 +1,28 @@
-<form wire:submit.prevent="submitFilter" class="grid grid-cols-1 lg:grid-cols-6 gap-3">
-    <div class="lg:col-span-2 w-full">
-        <div wire:ignore>
-            <x-select wire:model="cluster" id="select-cluster" class="w-full"></x-select>
+<form wire:submit.prevent="submitFilter" class="flex w-full md:flex-wrap flex-col gap-3">
+    <div class="flex gap-3 flex-col md:flex-row w-full">
+        <div class="w-full">
+            <div wire:ignore>
+                <x-select wire:model="cluster" id="select-cluster"></x-select>
+            </div>
+            @error("cluster") <span class="text-red-500 mt-3 text-sm">{{ __($message) }}</span> @enderror
         </div>
-        @error("cluster") <span class="text-red-500 mt-3 text-sm">{{ __($message) }}</span> @enderror
+    
+        <div class="w-full">
+            <div wire:ignore>
+                <x-select wire:model="ruas" id="select-ruas" disabled="true"></x-select>
+            </div>
+            @error("ruas") <span class="text-red-500 mt-3 text-sm">{{ __($message) }}</span> @enderror
+        </div>
+    
+        <div class="w-full">
+            <div wire:ignore>
+                <x-select wire:model="gerbang" id="select-gerbang" disabled="true"></x-select>
+            </div>
+            @error("gerbang") <span class="text-red-500 mt-3 text-sm">{{ __($message) }}</span> @enderror
+        </div>
     </div>
 
-    <div class="lg:col-span-2 lg:col-start-3 w-full">
-        <div wire:ignore>
-            <x-select wire:model="ruas" id="select-ruas" disabled="true" class="w-full"></x-select>
-        </div>
-        @error("ruas") <span class="text-red-500 mt-3 text-sm">{{ __($message) }}</span> @enderror
-    </div>
-
-    <div class="lg:col-span-2 lg:col-start-5 w-full">
-        <div wire:ignore>
-            <x-select wire:model="gerbang" id="select-gerbang" disabled="true" class="w-full"></x-select>
-        </div>
-        @error("gerbang") <span class="text-red-500 mt-3 text-sm">{{ __($message) }}</span> @enderror
-    </div>
-
-    <div class="lg:col-span-6 w-full">
+    <div class="w-full">
         <x-button type="submit" class="font-bold text-md text-center w-full">
             <x-lucide-mouse-pointer-click class="size-7 mr-3" />
             Generate QR Code
@@ -39,6 +41,7 @@
         $("#select-cluster").select2({
             placeholder: "-- Pilih Cluster --",
             data: defaultCluster,
+            width: '100%',
             ajax: {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -72,6 +75,7 @@
         $("#select-ruas").select2({
             placeholder: "-- Pilih Ruas --",
             data: defaultRuas,
+            width: '100%',
             ajax: {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -105,6 +109,7 @@
         $("#select-gerbang").select2({
             placeholder: "-- Pilih Gerbang --",
             data: defaultGerbang,
+            width: '100%',
             ajax: {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

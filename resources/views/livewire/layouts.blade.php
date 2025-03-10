@@ -20,14 +20,14 @@
     <x-nav-header />
   </div>
 
-  <div class="flex gap-10 h-[calc(100vh-12rem)]">
+  <div class="flex w-full gap-10 h-[calc(100vh-12rem)]">
     <x-sidebar />
 
-    <main class="w-[calc(100% - 256px)] h-full flex-1 overflow-y-scroll overflow-x-hidden px-5">
+    <main class="size-full flex-1 lg:overflow-y-scroll lg:overflow-x-hidden">
       {{ $slot }}
     </main>
   </div>
   @livewireScripts
   @stack('scripts')
-  </body>
+</body>
 </html>

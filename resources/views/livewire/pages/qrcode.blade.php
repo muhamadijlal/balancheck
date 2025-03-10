@@ -1,7 +1,7 @@
-<div class="flex flex-col gap-5">
+<div class="flex flex-col gap-16">
     @livewire('filter-form')
 
-    <div class="flex flex-col items-center justify-center h-full md:h-[calc(100vh-22rem)] gap-5">
+    <div class="flex flex-col items-center justify-center h-full md:h-[calc(100vh-22rem)] gap-5 mb-16">
         <div class="text-center">
             <!-- Wire loading state -->
             <div wire:loading class="text-center">
@@ -29,21 +29,23 @@
 
 @push('scripts')
 <script>
-    // Get the current environment variable for REFRESH_QRCODE_INTERVAL
-    const REFRESH_QRCODE_INTERVAL = {{ env('REFRESH_QRCODE_INTERVAL', 10) }}; // Default to 10 seconds if not set
+    document.addEventListener('DOMContentLoaded', function () {
+        // Cek apakah listener sudah pernah dibuat
+        if (!window.hasInitializedTimerListener) {
+            window.hasInitializedTimerListener = true;
 
-    console.log(REFRESH_QRCODE_INTERVAL)
+            const REFRESH_QRCODE_INTERVAL = {{ env('REFRESH_QRCODE_INTERVAL', 10) }};
+            console.log('Interval:', REFRESH_QRCODE_INTERVAL);
 
-    // Listen for the 'start-timer' event triggered by Livewire
-    Livewire.on('start-timer', function() {
-        console.log('Timer started...'); // Debugging log to confirm it's firing
+            Livewire.on('start-timer', function() {
+                console.log('Timer started...');
 
-        // Set a timer to reset the data
-        setTimeout(function() {
-            console.log(REFRESH_QRCODE_INTERVAL+ ' seconds passed, resetting data...'); // Debugging log
-            // Emit an event to Livewire to reset the data after the specified interval
-            Livewire.dispatch('resetData');
-        }, REFRESH_QRCODE_INTERVAL * 1000); // Convert seconds to milliseconds
+                setTimeout(function() {
+                    console.log(REFRESH_QRCODE_INTERVAL + ' seconds passed, resetting data...');
+                    Livewire.dispatch('resetData');
+                }, REFRESH_QRCODE_INTERVAL * 1000);
+            });
+        }
     });
 </script>
 @endpush
