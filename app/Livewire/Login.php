@@ -14,14 +14,16 @@ class Login extends Component
     #[Validate('required')]
     public $password;
 
-    public function login(){
+    public $errorMessage; // ⚙️ Public property to store error
+
+    public function login()
+    {
         $this->validate();
 
-        if(Auth::attempt(['email' => $this->email, 'password'=> $this->password])) {
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             return redirect()->route('show-qr-code');
         } else {
-            session()->flash('error', 'Alamat Email atau Password Anda salah!.');
-            return redirect()->route('login');
+            $this->errorMessage = 'Cek kembali email dan password anda.';
         }
     }
 

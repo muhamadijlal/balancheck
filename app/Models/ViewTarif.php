@@ -22,7 +22,13 @@ class ViewTarif extends Model
 
     public function scopeGroupByGerbang($query)
     {
-        return $query->select('gb')
-                     ->groupBy('gb');
+        return $query->select('nama_gb')
+                     ->groupBy('nama_gb');
+    }
+   
+    public function scopeGroupByAsalGerbang($query)
+    {
+        return $query->select('nama_asal_gb')
+                     ->groupBy('nama_asal_gb');
     }
 }

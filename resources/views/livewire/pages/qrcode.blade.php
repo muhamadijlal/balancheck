@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-16">
     @livewire('filter-form')
 
-    <div class="flex flex-col items-center justify-center h-full md:h-[calc(100vh-22rem)] gap-5 mb-16">
+    <div class="flex flex-col items-center justify-center h-full md:h-[calc(100vh-22rem)] gap-5 mb-16 lg:mb-0">
         <div class="text-center">
             <!-- Wire loading state -->
             <div wire:loading class="text-center">

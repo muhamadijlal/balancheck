@@ -1,6 +1,7 @@
 <form wire:submit.prevent="submitFilter" class="flex w-full md:flex-wrap flex-col gap-3">
     <div class="flex gap-3 flex-col md:flex-row w-full">
         <div class="w-full">
+            <label for="select-cluster" class="hidden font-semibold lg:block pb-2">Cluster</label>
             <div wire:ignore>
                 <x-select wire:model="cluster" id="select-cluster"></x-select>
             </div>
@@ -8,6 +9,7 @@
         </div>
     
         <div class="w-full">
+            <label for="select-ruas" class="hidden font-semibold lg:block pb-2">Ruas</label>
             <div wire:ignore>
                 <x-select wire:model="ruas" id="select-ruas" disabled="true"></x-select>
             </div>
@@ -15,6 +17,7 @@
         </div>
     
         <div class="w-full">
+            <label for="select-gerbang" class="hidden font-semibold lg:block pb-2">Gerbang</label>
             <div wire:ignore>
                 <x-select wire:model="gerbang" id="select-gerbang" disabled="true"></x-select>
             </div>

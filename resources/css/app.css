@@ -30,7 +30,7 @@ span.select2-selection__arrow {
     @apply hover:bg-black hover:text-white;
   }
 
-  td > span > div {
+  td > span > div, th > span {
     @apply text-xs;
   }
 }

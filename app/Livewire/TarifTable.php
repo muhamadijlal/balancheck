@@ -6,7 +6,6 @@ use App\Models\ViewTarif;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use PowerComponents\LivewirePowerGrid\Column;
-use PowerComponents\LivewirePowerGrid\Components\SetUp\Responsive;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
@@ -47,7 +46,6 @@ final class TarifTable extends PowerGridComponent
             ->add('id')
             ->add('cluster')
             ->add('cabang')
-            ->add('gb')
             ->add('nama_gb')
             ->add('nama_asal_gb')
             ->add('gol1', function($row){
@@ -64,8 +62,7 @@ final class TarifTable extends PowerGridComponent
             })
             ->add('gol5', function($row){
                 return "Rp. ".number_format($row->gol5, 0, '.', '.').",-";
-            })
-            ->add('ags');
+            });
     }
 
     public function columns(): array
@@ -80,10 +77,6 @@ final class TarifTable extends PowerGridComponent
                 ->searchable(),
 
             Column::make('Nama Cabang', 'cabang')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Gerbang Id', 'gb')
                 ->sortable()
                 ->searchable(),
 
@@ -115,10 +108,6 @@ final class TarifTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('AGS', 'ags')
-                ->sortable()
-                ->searchable(),
-
             // Column::action('Action')
         ];
     }
@@ -139,20 +128,16 @@ final class TarifTable extends PowerGridComponent
                 ->optionValue('cabang'),
 
             // Filter By (gerbang)
-            Filter::select('gb')
+            Filter::select('nama_gb')
                 ->dataSource(ViewTarif::groupByGerbang()->get())
-                ->optionLabel('gb')
-                ->optionValue('gb'),
+                ->optionLabel('nama_gb')
+                ->optionValue('nama_gb'),
 
-            // Filter nama gerbang
-            Filter::inputText('nama_gb')
-                ->placeholder('Filter by nama gerbang')
-                ->operators(['contains', 'is', 'is_not']),
-
-            // Filter nama asal gerbang
-            Filter::inputText('nama_asal_gb')
-                ->placeholder('Filter by nama asal gerbang')
-                ->operators(['contains', 'is', 'is_not']),
+            // Filter By (gerbang)
+            Filter::select('nama_asal_gb')
+                ->dataSource(ViewTarif::groupByAsalGerbang()->get())
+                ->optionLabel('nama_asal_gb')
+                ->optionValue('nama_asal_gb'),
         ];
     }
 
