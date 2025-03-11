@@ -12,6 +12,7 @@
         "livewire/livewire": "^3.6",
         "luvi-ui/laravel-luvi": "^0.5.3",
         "mallardduck/blade-lucide-icons": "^1.23",
+        "openspout/openspout": "^4.28",
         "power-components/livewire-powergrid": "^6.1"
     },
     "require-dev": {

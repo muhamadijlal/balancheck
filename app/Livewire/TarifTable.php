@@ -10,6 +10,8 @@ use PowerComponents\LivewirePowerGrid\Facades\Filter;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Traits\WithExport;
+use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable; 
 
 
 final class TarifTable extends PowerGridComponent
@@ -17,10 +19,13 @@ final class TarifTable extends PowerGridComponent
     public string $tableName = 'tarif-table-3gmcvg-table';
     public bool $deferLoading = false;
 
+    use WithExport;
 
     public function setUp(): array
     {
         // $this->showCheckBox();
+
+        $fileName = 'Data-Tarif-'.date("d-m-Y");
 
         return [
             PowerGrid::header()
@@ -28,6 +33,8 @@ final class TarifTable extends PowerGridComponent
             PowerGrid::footer()
                 ->showPerPage(10, [10, 50, 100, 500])
                 ->showRecordCount('full'),
+            
+            PowerGrid::exportable(fileName: $fileName)->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV)
 
             // PowerGrid::responsive(),
         ];
