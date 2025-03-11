@@ -29,7 +29,10 @@ class Qrcode extends Component
         $FALLBACK_URI = asset("assets/images/image-off.svg");
 
         // Hit API GET
-        $response = Http::get($URI);
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+        ])->get($URI);
+        
         $this->statusCode = $response->getStatusCode();
 
         if($response->getStatusCode() === 500){

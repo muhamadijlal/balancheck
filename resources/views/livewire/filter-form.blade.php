@@ -144,12 +144,14 @@
     // Event handler untuk perubahan nilai Cluster
     $("#select-cluster").on('change', function(e) {
         $("#select-ruas").attr("disabled", false);
+        $("#select-ruas").html('');
         @this.set('cluster', e.target.value);
     });
 
     // Event handler untuk perubahan nilai Ruas
     $("#select-ruas").on('change', function(e) {
         $("#select-gerbang").attr("disabled", false);
+        $("#select-gerbang").html('');
         @this.set('ruas', e.target.value);
     });
 
