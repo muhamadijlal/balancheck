@@ -10,16 +10,11 @@ class Qrcode extends Component
 {
     public $data;
     public $statusCode;
-    public $loading = false;
+    public $contentType;
 
     #[On('filter-submitted')]
     public function generateQRCode($data)
     {
-        // Set loading menjadi true saat data sedang diproses
-        $this->loading = true;
-
-        // Setelah data didapatkan, update nilai data
-
         // Example data
         // https://iot.amarullz.com/saldo/?cluster=3&cb=45&gb=30
 
@@ -29,21 +24,18 @@ class Qrcode extends Component
         $FALLBACK_URI = asset("assets/images/image-off.svg");
 
         // Hit API GET
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-        ])->get($URI);
+        $response = Http::get($URI);
         
         $this->statusCode = $response->getStatusCode();
+        $this->contentType = $response->getHeaders()['Content-Type'][0];
 
-        if($response->getStatusCode() === 500){
-            $this->data = $FALLBACK_URI;
-        } else {
+        // cara alternatif cek Content-Type = 'image/gif'
+        if($response->getStatusCode() === 200 && $response->getHeaders()['Content-Type'][0] === 'image/gif'){
             $this->dispatch('start-timer');
             $this->data = $URI;
+        } else {
+            $this->data = $FALLBACK_URI;
         }
-
-        // Set loading menjadi false setelah data selesai diproses
-        $this->loading = false;
     }
 
     // Method to reset data

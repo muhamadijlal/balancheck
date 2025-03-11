@@ -13,7 +13,7 @@
             <!-- Content displayed when loading is complete -->
             <div wire:loading.remove class="text-center">
                 @if($data)
-                    @if($statusCode === 200)
+                    @if($statusCode === 200 && $contentType === 'image/gif')
                         <!-- Show generated QR code or data -->
                         <div class="size-48 md:size-56 mx-auto mb-8">
                             <img 
