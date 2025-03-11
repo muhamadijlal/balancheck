@@ -13,20 +13,32 @@
             <!-- Content displayed when loading is complete -->
             <div wire:loading.remove class="text-center">
                 @if($data)
-                    <!-- Show generated QR code or data -->
-                    <div class="size-48 md:size-56 mx-auto mb-8">
-                        <img 
-                            src="{{ $data }}" 
-                            alt="QR Code" 
-                            onerror="this.onerror=null; this.src='{{ asset('assets/images/image-off.svg') }}';" 
-                            class="w-full h-full object-cover rounded-xl"
-                        />
-                    </div>
-                    
-                    <h1 class="text-2xl font-bold">Scan QR Code</h1>
-                    <p class="text-gray-500">
-                        QR Code akan hilang setelah <span x-text="countdown"></span> detik.
-                    </p>
+                    @if($statusCode === 200)
+                        <!-- Show generated QR code or data -->
+                        <div class="size-48 md:size-56 mx-auto mb-8">
+                            <img 
+                                src="{{ $data }}" 
+                                alt="QR Code"
+                                class="w-full h-full object-cover rounded-xl"
+                            />
+                        </div>
+                        
+                        <h1 class="text-2xl font-bold">Scan QR Code</h1>
+                        <p class="text-gray-500">
+                            QR Code akan hilang setelah <span x-text="countdown"></span> detik.
+                        </p>
+                    @else
+                        <!-- Show generated QR code or data -->
+                        <div class="size-48 md:size-56 mx-auto mb-8">
+                            <img 
+                                src="{{ $data }}" 
+                                alt="Fallback Image"
+                                class="w-full h-full object-cover rounded-xl"
+                            />
+                        </div>
+                        
+                        <h1 class="text-2xl font-bold">Data gerbang tidak tersedia</h1>
+                    @endif
                 @else
                     <!-- Default content when data is not available -->
                     <x-lucide-qr-code class="size-28 md:size-56 text-gray-200 mx-auto mb-8" />

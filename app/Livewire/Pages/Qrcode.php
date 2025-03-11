@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Pages;
 
+use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Qrcode extends Component
 {
     public $data;
+    public $statusCode;
     public $loading = false;
 
     #[On('filter-submitted')]
@@ -23,13 +25,22 @@ class Qrcode extends Component
 
         $BASE_QRCODE_URL = env('BASE_QRCODE_URL');
 
-        $this->data = $BASE_QRCODE_URL . '/?cluster=' . $data['clusterId'] . '&cb=' . $data['ruasId'] . '&gb=' . $data['gerbangId'];
+        $URI = $BASE_QRCODE_URL . '/?cluster=' . $data['clusterId'] . '&cb=' . $data['ruasId'] . '&gb=' . $data['gerbangId'];
+        $FALLBACK_URI = asset("assets/images/image-off.svg");
+
+        // Hit API GET
+        $response = Http::get($URI);
+        $this->statusCode = $response->getStatusCode();
+
+        if($response->getStatusCode() === 500){
+            $this->data = $FALLBACK_URI;
+        } else {
+            $this->dispatch('start-timer');
+            $this->data = $URI;
+        }
 
         // Set loading menjadi false setelah data selesai diproses
         $this->loading = false;
-
-        // Trigger JavaScript to reset the data after 10 seconds
-        $this->dispatch('start-timer');
     }
 
     // Method to reset data
