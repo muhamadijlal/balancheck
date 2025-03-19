@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    #[Validate('required|email')]
-    public $email;
+    #[Validate('required')]
+    public $name;
 
     #[Validate('required')]
     public $password;
@@ -20,10 +20,10 @@ class Login extends Component
     {
         $this->validate();
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        if (Auth::attempt(['name' => $this->name, 'password' => $this->password])) {
             return redirect()->route('show-qr-code');
         } else {
-            $this->errorMessage = 'Cek kembali email dan password anda.';
+            $this->errorMessage = 'Cek kembali name dan password anda.';
         }
     }
 
