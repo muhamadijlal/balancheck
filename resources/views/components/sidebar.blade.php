@@ -16,8 +16,8 @@
 
     <div class="flex items-center justify-between sm:hidden lg:flex p-4">
         <div class="flex flex-col">
-            <p class="text-base font-semibold">Haidarijlal</p>
-            <span class="text-xs text-gray-500">m.haidarijl@gmail.com</span>
+            <p class="text-base font-semibold">{{ auth()->user()->name }}</p>
+            <span class="text-xs text-gray-500">{{ auth()->user()->email }}</span>
         </div>
 
         @livewire('logout')
